@@ -1,38 +1,95 @@
 .App {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr;
+}
+
+.App h1 {
   text-align: center;
+  color: #7DD180;
+  font-size: 2rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App .card {
+  background-color: #322F39;
+  width: 600px;
+  box-shadow: 2px 2px 5px 2px rgba(0,0,0,0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App .card header {
+  padding: 12px 6px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.App .card input {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  margin-left: 8px;
 }
 
-.App-link {
-  color: #61dafb;
+.App .card input[type="checkbox"] {
+  position: relative;
+  background-color: transparent;
+  color: transparent;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App .card input[type="checkbox"]::before {
+  content: "";
+  display: block;
+  background-color: #3c3745;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  position: absolute;
+  right: -5px;
+  top: -5px;
+}
+
+.App .card input[type="checkbox"]:checked::before {
+  content: "✓";
+  color:#7DD180;
+  font-weight: 600;
+}
+
+.App .card input:focus {
+  outline: 0;
+}
+
+.card--info {
+  background-color: #eee;
+  color: #6C6777;
+  padding: 10px 4px;
+}
+
+.card--badge {
+  border: 1px solid #6C6777;
+  border-radius: 20px;
+  padding: 2px 8px;
+  margin-left: 8px;
+}
+
+.card--badge.active {
+  background-color: #6C6777;
+  color: #fff;
+}
+
+.card--info span:first-child {
+  margin-right: 16px;
+}
+
+.task {
+  padding: 10px 5px;
+  display: grid;
+  grid-template-columns: max-content max-content 1fr;
+  gap: 8px;
+  color: #6C6777;
+  font-size: 1.3rem;
+}
+
+.task button {
+  justify-self: end;
+  background-color: transparent;
+  border: none;
+  color: #EE1630;
+  font-size: 1.5rem;
 }
