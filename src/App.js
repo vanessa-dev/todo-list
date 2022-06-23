@@ -9,6 +9,10 @@ function App() {
       target.value = "";
     }
   }
+  
+  const handleClick = (itemIndex) => {
+    setTasks(tasks.filter((item, index) => index !== itemIndex));
+  }
   return (
     <article className="App">
       <h1>Todo List</h1>
@@ -32,7 +36,7 @@ function App() {
           <div className="task" key={index}>
            <input type="checkbox" id={index}/>
            <label htmlFor={index}>{item}</label>
-           <button>X</button>
+           <button onClick={() => handleClick(index)}>X</button>
           </div>
         ))}
         </div>
