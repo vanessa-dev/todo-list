@@ -20,6 +20,10 @@ function App() {
     setTasks(tasks.filter((item, index) => index !== itemIndex));
   }
 
+  const checkAll = ({target}) => {
+    setTasks(tasks.map((item) => {return {nome: item.nome, checked: target.checked}}));
+  }
+
   const handleChange = (itemIndex) => {
     setTasks(tasks.map((item, index) => {
       if( itemIndex === index) {
@@ -34,7 +38,7 @@ function App() {
       <h1>Todo List</h1>
       <section className="card">
         <header>
-        {tasks.length > 0  && <input type="checkbox"/>}
+        {tasks.length > 0  && <input onClick={checkAll} type="checkbox"/>}
           <input type="text"   onKeyPress={handleKeyPress} placeholder="What needs to be done?"/>
         </header>
   
