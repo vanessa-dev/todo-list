@@ -58,7 +58,8 @@ function App() {
            <label htmlFor={`task_${index}`}>{item.nome}</label>
            <button onClick={() => handleClick(index)}>X</button>
           </div>
-        ))}
+        ))
+        }
         </div>
       </section>
     </article>
