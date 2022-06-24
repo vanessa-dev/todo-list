@@ -1,9 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Badge from './components/badge';
 
 function App() {
   const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    if (tasks.length > 0) {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  }, [tasks]);
+
+  useEffect(() => {
+    const tasksStorage = JSON.parse(localStorage.getItem('tasks'));
+    if (tasksStorage) {
+     setTasks(tasksStorage);
+    }
+  }, []);
+  
   const handleKeyPress = ({target, which}) => {
     if (which === 13) {
       setTasks([...tasks, {nome: target.value, checked: false}]);
