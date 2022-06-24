@@ -28,7 +28,7 @@ function App() {
       <h1>Todo List</h1>
       <section className="card">
         <header>
-          <input type="checkbox"/>
+        {tasks.length > 0  && <input type="checkbox"/>}
           <input type="text"   onKeyPress={handleKeyPress} placeholder="What needs to be done?"/>
         </header>
   
