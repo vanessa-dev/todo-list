@@ -1,0 +1,20 @@
+.card--badge {
+  border: 1px solid #6C6777;
+  border-radius: 20px;
+  padding: 2px 8px;
+  margin-left: 8px;
+}
+
+.card--badge.active {
+  background-color: #6C6777;
+  color: #fff;
+}
+
+button {
+  border: none;
+  color: #6C6777;
+}
+
+span:first-child {
+  margin-right: 16px;
+}

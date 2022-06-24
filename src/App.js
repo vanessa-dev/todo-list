@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import Badge from './components/badge';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -9,7 +10,12 @@ function App() {
       target.value = "";
     }
   }
-  
+
+  const taskToDo = () => {
+    let total = tasks.filter((item) => !item.checked);
+    return total.length;
+  }
+
   const handleClick = (itemIndex) => {
     setTasks(tasks.filter((item, index) => index !== itemIndex));
   }
@@ -35,10 +41,10 @@ function App() {
         {
           tasks.length > 0  && 
           <div className="card--info">
-            <span>2 items left</span>
-            <span className="card--badge active">all</span>
-            <span className="card--badge">active</span>
-            <span className="card--badge">completed</span>
+            <Badge>{taskToDo()} items left</Badge>
+            <Badge class="card--badge">all</Badge>
+            <Badge class="card--badge">active</Badge>
+            <Badge class="card--badge">completed</Badge>
           </div>
         } 
         <div className="card--tasks">
