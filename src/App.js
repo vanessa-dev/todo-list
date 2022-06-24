@@ -46,7 +46,7 @@ function App() {
           tasks.length > 0  && 
           <div className="card--info">
             <Badge>{taskToDo()} items left</Badge>
-            <Badge class="card--badge">all</Badge>
+            <Badge class="card--badge active">all</Badge>
             <Badge class="card--badge">active</Badge>
             <Badge class="card--badge">completed</Badge>
           </div>
