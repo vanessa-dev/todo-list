@@ -3,9 +3,9 @@ import './App.css';
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const handleChange = ({target, which}) => {
+  const handleKeyPress = ({target, which}) => {
     if (which === 13) {
-      setTasks([...tasks, target.value]);
+      setTasks([...tasks, {nome: target.value, checked: false}]);
       target.value = "";
     }
   }
@@ -13,13 +13,23 @@ function App() {
   const handleClick = (itemIndex) => {
     setTasks(tasks.filter((item, index) => index !== itemIndex));
   }
+
+  const handleChange = (itemIndex) => {
+    setTasks(tasks.map((item, index) => {
+      if( itemIndex === index) {
+        item = {nome: item.nome, checked: !item.checked}
+      }
+      return item;
+    }));
+  }
+
   return (
     <article className="App">
       <h1>Todo List</h1>
       <section className="card">
         <header>
           <input type="checkbox"/>
-          <input type="text"   onKeyPress={handleChange} placeholder="What needs to be done?"/>
+          <input type="text"   onKeyPress={handleKeyPress} placeholder="What needs to be done?"/>
         </header>
   
         {
@@ -34,8 +44,8 @@ function App() {
         <div className="card--tasks">
         {tasks.map((item, index) => (
           <div className="task" key={index}>
-           <input type="checkbox" id={index}/>
-           <label htmlFor={index}>{item}</label>
+           <input type="checkbox" id={`task_${index}`} onChange={() => handleChange(index)} checked={item.checked}/>
+           <label htmlFor={`task_${index}`}>{item.nome}</label>
            <button onClick={() => handleClick(index)}>X</button>
           </div>
         ))}
